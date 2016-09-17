@@ -13,6 +13,7 @@
 		3A43979E1D8D92AC004992C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A43979C1D8D92AC004992C0 /* Main.storyboard */; };
 		3A4397A01D8D92AC004992C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A43979F1D8D92AC004992C0 /* Assets.xcassets */; };
 		3A4397A31D8D92AC004992C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A4397A11D8D92AC004992C0 /* LaunchScreen.storyboard */; };
+		3A4397AC1D8D9C41004992C0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3A4397AB1D8D9C41004992C0 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3A43979F1D8D92AC004992C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A4397A21D8D92AC004992C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A4397A41D8D92AC004992C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A4397AB1D8D9C41004992C0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				3A4397921D8D92AC004992C0 /* AppDelegate.swift */,
 				3A43979A1D8D92AC004992C0 /* GameViewController.swift */,
+				3A4397AB1D8D9C41004992C0 /* GameScene.sks */,
 				3A43979C1D8D92AC004992C0 /* Main.storyboard */,
 				3A4397A11D8D92AC004992C0 /* LaunchScreen.storyboard */,
 				3A4397A41D8D92AC004992C0 /* Info.plist */,
@@ -134,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4397AC1D8D9C41004992C0 /* GameScene.sks in Resources */,
 				3A43979E1D8D92AC004992C0 /* Main.storyboard in Resources */,
 				3A4397A01D8D92AC004992C0 /* Assets.xcassets in Resources */,
 				3A4397A31D8D92AC004992C0 /* LaunchScreen.storyboard in Resources */,
