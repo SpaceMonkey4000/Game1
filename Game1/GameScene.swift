@@ -23,7 +23,7 @@ class GameScene: SKScene {
         // The top of the screen is 0.5*screenHeight.
 
         // Position the spaceship near the bottom of the screen.
-        spaceshipNode.position = CGPoint(x: 0, y: -0.4*screenHeight)
+        spaceshipNode.position = CGPoint(x: 0.0, y: -0.4*screenHeight)
 
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
