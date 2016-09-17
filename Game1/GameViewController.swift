@@ -1,10 +1,3 @@
-//
-//  GameViewController.swift
-//  Game1
-//
-//  Created by Drew Olbrich on 9/17/16.
-//  Copyright © 2016 Retroactive Fiasco. All rights reserved.
-//
 
 import UIKit
 import SpriteKit
