@@ -56,15 +56,23 @@
 		3A4397911D8D92AC004992C0 /* Game1 */ = {
 			isa = PBXGroup;
 			children = (
-				3A4397921D8D92AC004992C0 /* AppDelegate.swift */,
 				3A4397981D8D92AC004992C0 /* GameScene.swift */,
+				3A43979F1D8D92AC004992C0 /* Assets.xcassets */,
+				3A4397AA1D8D96BE004992C0 /* Dad Only Keep Out */,
+			);
+			path = Game1;
+			sourceTree = "<group>";
+		};
+		3A4397AA1D8D96BE004992C0 /* Dad Only Keep Out */ = {
+			isa = PBXGroup;
+			children = (
+				3A4397921D8D92AC004992C0 /* AppDelegate.swift */,
 				3A43979A1D8D92AC004992C0 /* GameViewController.swift */,
 				3A43979C1D8D92AC004992C0 /* Main.storyboard */,
-				3A43979F1D8D92AC004992C0 /* Assets.xcassets */,
 				3A4397A11D8D92AC004992C0 /* LaunchScreen.storyboard */,
 				3A4397A41D8D92AC004992C0 /* Info.plist */,
 			);
-			path = Game1;
+			name = "Dad Only Keep Out";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
