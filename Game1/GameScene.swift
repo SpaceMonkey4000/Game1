@@ -31,23 +31,49 @@ class GameScene: SKScene {
     }
 
     override func didMove(to view: SKView) {
+        // The background color must be set in didMove(to:) instead of init(coder:), because reasons.
         self.backgroundColor = UIColor.darkGray
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first!
+        // Called when the user begins touching the screen.
+
+        let touchPosition = convertTouchLocationToScene(touch: touches.first!)
+        aimSpaceship(at: touchPosition)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Called as the user moves their finger across the screen.
+
+        let touchPosition = convertTouchLocationToScene(touch: touches.first!)
+        aimSpaceship(at: touchPosition)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Called when the user stops touching the screen.
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Called when a touch is interrupted because a popup appeared, or the user
+        // tapped the iPad's home button in the middle of a touch.
+        // You can probably ignore this case.
     }
 
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered.
+    func convertTouchLocationToScene(touch: UITouch) -> CGPoint {
+        // The touch's position is in the coordinate space of the screen (0, 0 to 1024, 768),
+        // but we need its position in the coordinate space of the SpriteKit scene,
+        // which is (-512, -384 to 512, 384). This does the conversion.
+        return touch.location(in: self)
+    }
+
+    func aimSpaceship(at position: CGPoint) {
+        // Point the spaceship at a position on the screen.
+
+        // Calculate the angle (in radians, not degrees) needed to point the spaceship's +Y axis toward the position.
+        let angle = 0.5*CGFloat.pi + atan2(spaceshipNode.position.y - position.y, spaceshipNode.position.x - position.x)
+
+        // Rotate the spaceship.
+        let rotateAction = SKAction.rotate(toAngle: angle, duration: 0.0)
+        spaceshipNode.run(rotateAction)
     }
 }
