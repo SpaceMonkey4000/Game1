@@ -2,7 +2,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    var spaceshipNode = SKSpriteNode(imageNamed: "Spaceship")
+    var spaceshipNode = SKSpriteNode(imageNamed: "gun")
 
     // The size of the iPad screen.
     let screenWidth = 1024.0
@@ -27,12 +27,13 @@ class GameScene: SKScene {
 
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
-        spaceshipNode.setScale(0.25)
+        spaceshipNode.setScale(1.0)
     }
 
     override func didMove(to view: SKView) {
         // The background color must be set in didMove(to:) instead of init(coder:), because reasons.
-        self.backgroundColor = UIColor.darkGray
+        // self.backgroundColor = UIColor.darkGray
+        self.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.2, alpha: 1.0)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,10 +71,25 @@ class GameScene: SKScene {
         // Point the spaceship at a position on the screen.
 
         // Calculate the angle (in radians, not degrees) needed to point the spaceship's +Y axis toward the position.
-        let angle = 0.5*CGFloat.pi + atan2(spaceshipNode.position.y - position.y, spaceshipNode.position.x - position.x)
+        var radians = 0.5*CGFloat.pi + atan2(spaceshipNode.position.y - position.y, spaceshipNode.position.x - position.x)
+        
+        var degrees = radians/CGFloat.pi*180.0
 
+        print("angle =", degrees)
+
+        if degrees > 90 && degrees < 180 {
+            degrees = 90
+        }
+        if degrees < 270 && degrees >= 180 {
+            degrees = -90
+        }
+        
+        
+        
+        radians = degrees/180.0*CGFloat.pi
+        
         // Rotate the spaceship.
-        let rotateAction = SKAction.rotate(toAngle: angle, duration: 0.0)
+        let rotateAction = SKAction.rotate(toAngle: radians, duration: 0.0)
         spaceshipNode.run(rotateAction)
     }
 }
