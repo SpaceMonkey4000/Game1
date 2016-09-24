@@ -25,12 +25,13 @@ class GameScene: SKScene {
         // The top of the screen is 0.5*screenHeight.
 
         // Position the spaceship near the bottom of the screen.
-        gunNode.position = CGPoint(x: 0.0, y: -0.4*screenHeight)
+        gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
 
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
         gunNode.setScale(1.0)
+        gunNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
     }
 
     override func didMove(to view: SKView) {
