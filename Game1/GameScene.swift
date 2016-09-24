@@ -2,7 +2,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    var spaceshipNode = SKSpriteNode(imageNamed: "gun")
+    var gunNode = SKSpriteNode(imageNamed: "gun")
     var baseNode = SKSpriteNode(imageNamed: "base")
 
     // The size of the iPad screen.
@@ -15,7 +15,7 @@ class GameScene: SKScene {
         // Called before the game starts.
 
         // Add the spaceship to the scene.
-        self.addChild(spaceshipNode)
+        self.addChild(gunNode)
         self.addChild(baseNode)
 
         // The center of the screen is 0, 0.
@@ -25,12 +25,12 @@ class GameScene: SKScene {
         // The top of the screen is 0.5*screenHeight.
 
         // Position the spaceship near the bottom of the screen.
-        spaceshipNode.position = CGPoint(x: 0.0, y: -0.4*screenHeight)
+        gunNode.position = CGPoint(x: 0.0, y: -0.4*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
 
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
-        spaceshipNode.setScale(1.0)
+        gunNode.setScale(1.0)
     }
 
     override func didMove(to view: SKView) {
@@ -74,7 +74,7 @@ class GameScene: SKScene {
         // Point the spaceship at a position on the screen.
 
         // Calculate the angle (in radians, not degrees) needed to point the spaceship's +Y axis toward the position.
-        var radians = 0.5*CGFloat.pi + atan2(spaceshipNode.position.y - position.y, spaceshipNode.position.x - position.x)
+        var radians = 0.5*CGFloat.pi + atan2(gunNode.position.y - position.y, gunNode.position.x - position.x)
         
         var degrees = radians/CGFloat.pi*180.0
         
@@ -92,6 +92,6 @@ class GameScene: SKScene {
         
         // Rotate the spaceship.
         let rotateAction = SKAction.rotate(toAngle: radians, duration: 0.0)
-        spaceshipNode.run(rotateAction)
+        gunNode.run(rotateAction)
     }
 }
