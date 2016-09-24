@@ -3,6 +3,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     var spaceshipNode = SKSpriteNode(imageNamed: "gun")
+    var baseNode = SKSpriteNode(imageNamed: "base")
 
     // The size of the iPad screen.
     let screenWidth = 1024.0
@@ -15,6 +16,7 @@ class GameScene: SKScene {
 
         // Add the spaceship to the scene.
         self.addChild(spaceshipNode)
+        self.addChild(baseNode)
 
         // The center of the screen is 0, 0.
         // The left side of the screen is -0.5*screenWidth.
@@ -24,6 +26,7 @@ class GameScene: SKScene {
 
         // Position the spaceship near the bottom of the screen.
         spaceshipNode.position = CGPoint(x: 0.0, y: -0.4*screenHeight)
+        baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
 
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
@@ -33,7 +36,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         // The background color must be set in didMove(to:) instead of init(coder:), because reasons.
         // self.backgroundColor = UIColor.darkGray
-        self.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.2, alpha: 1.0)
+        self.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.23, alpha: 1.0)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -74,8 +77,7 @@ class GameScene: SKScene {
         var radians = 0.5*CGFloat.pi + atan2(spaceshipNode.position.y - position.y, spaceshipNode.position.x - position.x)
         
         var degrees = radians/CGFloat.pi*180.0
-
-        print("angle =", degrees)
+        
 
         if degrees > 90 && degrees < 180 {
             degrees = 90

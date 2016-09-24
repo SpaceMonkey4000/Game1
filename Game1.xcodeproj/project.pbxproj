@@ -110,6 +110,7 @@
 				TargetAttributes = {
 					3A43978E1D8D92AC004992C0 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ACWSMJNE4K;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -276,7 +277,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ACWSMJNE4K;
 				INFOPLIST_FILE = Game1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.retroactivefiasco.Game1;
@@ -289,7 +290,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ACWSMJNE4K;
 				INFOPLIST_FILE = Game1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.retroactivefiasco.Game1;
@@ -317,6 +318,7 @@
 				3A4397A91D8D92AC004992C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
