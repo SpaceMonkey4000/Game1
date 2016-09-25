@@ -29,6 +29,9 @@ class GameScene: SKScene {
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
 
+        gunNode.zPosition = 100.0;
+        baseNode.zPosition = 200.0;
+        
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
         gunNode.setScale(1.0)
@@ -102,7 +105,9 @@ class GameScene: SKScene {
         let bulletNode = SKSpriteNode(imageNamed: "playerball")
         self.addChild(bulletNode)
         bulletNode.position = gunNode.position
- 
+
+        baseNode.zPosition = 900.0;
+
         var direction = CGPoint(x: position.x - gunNode.position.x, y: position.y - gunNode.position.y)
         let length = sqrt(direction.x*direction.x + direction.y*direction.y)
         direction.x /= length
