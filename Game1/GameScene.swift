@@ -9,7 +9,11 @@ class GameScene: SKScene {
     // The size of the iPad screen.
     let screenWidth = 1024.0
     let screenHeight = 768.0
+    
+    var lastTouchPosition = CGPoint(x: 0.0, y: 0.0)
 
+    var shootingTimer: Timer?
+    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
 
@@ -52,6 +56,9 @@ class GameScene: SKScene {
         let touchPosition = convertTouchLocationToScene(touch: touches.first!)
         aimSpaceship(at: touchPosition)
         shootBullet(at: touchPosition)
+        
+        lastTouchPosition = touchPosition
+        startShooting()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,16 +66,22 @@ class GameScene: SKScene {
 
         let touchPosition = convertTouchLocationToScene(touch: touches.first!)
         aimSpaceship(at: touchPosition)
+        
+        lastTouchPosition = touchPosition
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Called when the user stops touching the screen.
+        
+        stopShooting()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         // Called when a touch is interrupted because a popup appeared, or the user
         // tapped the iPad's home button in the middle of a touch.
         // You can probably ignore this case.
+        
+        stopShooting()
     }
 
     func convertTouchLocationToScene(touch: UITouch) -> CGPoint {
@@ -99,6 +112,19 @@ class GameScene: SKScene {
         // Rotate the spaceship.
         let rotateAction = SKAction.rotate(toAngle: radians, duration: 0.0)
         gunNode.run(rotateAction)
+    }
+    
+    func startShooting() {
+        assert(shootingTimer == nil, "Shooting timer is already defined.")
+        
+        shootingTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (Timer) in
+            self.shootBullet(at: self.lastTouchPosition)
+        })
+    }
+    
+    func stopShooting() {
+        shootingTimer?.invalidate()
+        shootingTimer = nil
     }
     
     func shootBullet(at position: CGPoint) {
