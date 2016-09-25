@@ -5,6 +5,7 @@ class GameScene: SKScene {
     
     var gunNode = SKSpriteNode(imageNamed: "gun")
     var baseNode = SKSpriteNode(imageNamed: "base")
+    var redDrone = SKSpriteNode(imageNamed: "red_drone")
 
     // The size of the iPad screen.
     let screenWidth = 1024.0
@@ -22,6 +23,8 @@ class GameScene: SKScene {
         // Add the spaceship to the scene.
         self.addChild(gunNode)
         self.addChild(baseNode)
+        self.addChild(redDrone)
+
 
         // The center of the screen is 0, 0.
         // The left side of the screen is -0.5*screenWidth.
@@ -32,16 +35,21 @@ class GameScene: SKScene {
         // Position the spaceship near the bottom of the screen.
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
+        redDrone.position = CGPoint(x: 0.0, y: 0.0*screenHeight)
 
         // Put the gun behind the base. Bigger numbers are in the front.
         // Smaller numbers are in the back.
         gunNode.zPosition = 100.0;
         baseNode.zPosition = 200.0;
+        redDrone.zPosition = 50.0;
         
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
         gunNode.setScale(1.0)
         gunNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        
+        // This is what makes the drones slightly bigger.
+        redDrone.setScale(1.3)
     }
 
     override func didMove(to view: SKView) {
@@ -133,7 +141,7 @@ class GameScene: SKScene {
         self.addChild(bulletNode)
         bulletNode.position = gunNode.position
 
-        bulletNode.zPosition = 50.0;
+        bulletNode.zPosition = 75.0;
 
         // The direction we should fire the bullet.
         var direction = CGPoint(x: position.x - gunNode.position.x, y: position.y - gunNode.position.y)
