@@ -180,8 +180,12 @@ class GameScene: SKScene {
         // before it stops moving. If you don't add this line, the drone will move at a constant rate.
         moveAction.timingMode = SKActionTimingMode.easeInEaseOut
         
+        // Make a sequence of the wait and move actions.
         let actionSequence = SKAction.sequence([waitAction, moveAction])
+        
+        // Make the drone run the sequence of actions.
         drone.run(actionSequence) {
+            // When the sequence of actions finishes, run a new sequence of drone actions.
             self.runDroneActions(drone: drone, waitDuration: waitDuration, teleportDuration: teleportDuration)
         }
     }
