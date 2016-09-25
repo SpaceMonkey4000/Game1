@@ -31,11 +31,18 @@ class GameScene: SKScene {
         // The bottom of the screen is -0.5*screenHeight.
         // The top of the screen is 0.5*screenHeight.
 
+        // random X of drone.
+        let droneXspawn = random(min: -0.45, max: 0.45)
+        // random Y of the drone.
+        let droneYspawn = random(min: -0.2, max: 0.45)
+        
         // Position the spaceship near the bottom of the screen.
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
-        redDrone.position = CGPoint(x: 0.0, y: 0.0*screenHeight)
+        redDrone.position = CGPoint(x: droneXspawn*screenHeight, y: droneYspawn*screenHeight)
+        
 
+        
         // Put the gun behind the base. Bigger numbers are in the front.
         // Smaller numbers are in the back.
         gunNode.zPosition = 100.0;
@@ -163,8 +170,8 @@ class GameScene: SKScene {
         }
     }
     
-    func random(min: Float, max: Float) -> Float {
-        let s = Float(arc4random())/Float(UInt32.max)
+    func random(min: Double, max: Double) -> Double {
+        let s = Double(arc4random())/Double(UInt32.max)
         return min*(1.0 - s) + max*s;
     }
     
