@@ -25,7 +25,6 @@ class GameScene: SKScene {
         self.addChild(baseNode)
         self.addChild(redDrone)
 
-
         // The center of the screen is 0, 0.
         // The left side of the screen is -0.5*screenWidth.
         // The right side of the screen is 0.5*screenWidth.
@@ -162,6 +161,11 @@ class GameScene: SKScene {
         bulletNode.run(moveAction) { 
             bulletNode.removeFromParent()
         }
+    }
+    
+    func random(min: Float, max: Float) -> Float {
+        let s = Float(arc4random())/Float(UInt32.max)
+        return min*(1.0 - s) + max*s;
     }
     
 }
