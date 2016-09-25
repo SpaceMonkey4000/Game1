@@ -2,6 +2,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
     var gunNode = SKSpriteNode(imageNamed: "gun")
     var baseNode = SKSpriteNode(imageNamed: "base")
 
@@ -95,4 +96,5 @@ class GameScene: SKScene {
         let rotateAction = SKAction.rotate(toAngle: radians, duration: 0.0)
         gunNode.run(rotateAction)
     }
+
 }
