@@ -46,6 +46,7 @@ class GameScene: SKScene {
 
         let touchPosition = convertTouchLocationToScene(touch: touches.first!)
         aimSpaceship(at: touchPosition)
+        shootBullet(at: touchPosition)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -96,5 +97,24 @@ class GameScene: SKScene {
         let rotateAction = SKAction.rotate(toAngle: radians, duration: 0.0)
         gunNode.run(rotateAction)
     }
-
+    
+    func shootBullet(at position: CGPoint) {
+        let bulletNode = SKSpriteNode(imageNamed: "playerball")
+        self.addChild(bulletNode)
+        bulletNode.position = gunNode.position
+ 
+        var direction = CGPoint(x: position.x - gunNode.position.x, y: position.y - gunNode.position.y)
+        let length = sqrt(direction.x*direction.x + direction.y*direction.y)
+        direction.x /= length
+        direction.y /= length
+        
+        let distance = CGFloat(screenWidth*1.5)
+        
+        let endPoint = CGPoint(x: gunNode.position.x + distance*direction.x, y: gunNode.position.y + distance*direction.y)
+        
+        let moveAction = SKAction.move(to: endPoint, duration: 1.45)
+        bulletNode.run(moveAction) { 
+            bulletNode.removeFromParent()
+        }
+    }
 }
