@@ -48,7 +48,7 @@ class GameScene: SKScene {
         gunNode.setScale(1.0)
         gunNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
         
-        // This is what makes the drones slightly bigger.
+        // This is what makes the drone slightly bigger.
         redDrone.setScale(1.3)
     }
 
