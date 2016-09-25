@@ -35,7 +35,7 @@ class GameScene: SKScene {
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
         
-        initializeDrone(drone: redDrone, waitDuration: 2.0, teleportDuration: 1.0)
+        initializeDrone(drone: redDrone, waitDuration: 5.0, teleportDuration: 0.12)
         
         // Put the gun behind the base. Bigger numbers are in the front.
         // Smaller numbers are in the back.
