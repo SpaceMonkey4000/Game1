@@ -29,6 +29,8 @@ class GameScene: SKScene {
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
 
+        // Put the gun behind the base. Bigger numbers are in the front.
+        // Smaller numbers are in the back.
         gunNode.zPosition = 100.0;
         baseNode.zPosition = 200.0;
         
@@ -106,7 +108,7 @@ class GameScene: SKScene {
         self.addChild(bulletNode)
         bulletNode.position = gunNode.position
 
-        baseNode.zPosition = 900.0;
+        bulletNode.zPosition = 50.0;
 
         var direction = CGPoint(x: position.x - gunNode.position.x, y: position.y - gunNode.position.y)
         let length = sqrt(direction.x*direction.x + direction.y*direction.y)
