@@ -129,7 +129,7 @@ class GameScene: SKScene {
     
     func shootBullet(at position: CGPoint) {
         let bulletNode = SKSpriteNode(imageNamed: "playerball")
-        bulletNode.setScale(1.7)
+        bulletNode.setScale(1.5)
         self.addChild(bulletNode)
         bulletNode.position = gunNode.position
 
