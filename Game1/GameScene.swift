@@ -31,17 +31,11 @@ class GameScene: SKScene {
         // The bottom of the screen is -0.5*screenHeight.
         // The top of the screen is 0.5*screenHeight.
 
-        // random X of drone.
-        let droneXspawn = random(min: -0.45, max: 0.45)
-        // random Y of the drone.
-        let droneYspawn = random(min: -0.2, max: 0.45)
-        
         // Position the spaceship near the bottom of the screen.
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
-        redDrone.position = CGPoint(x: droneXspawn*screenHeight, y: droneYspawn*screenHeight)
         
-
+        initializeDrone(drone: redDrone, waitDuration: 2.0, teleportDuration: 1.0)
         
         // Put the gun behind the base. Bigger numbers are in the front.
         // Smaller numbers are in the back.
@@ -168,6 +162,37 @@ class GameScene: SKScene {
         bulletNode.run(moveAction) { 
             bulletNode.removeFromParent()
         }
+    }
+    
+    func initializeDrone(drone: SKNode, waitDuration: TimeInterval, teleportDuration: TimeInterval) {
+        // Set initial drone position.
+        drone.position = randomDronePosition()
+
+        // Make the drone move randomly around the screen.
+        runDroneActions(drone: drone, waitDuration: waitDuration, teleportDuration: teleportDuration)
+    }
+    
+    func runDroneActions(drone: SKNode, waitDuration: TimeInterval, teleportDuration: TimeInterval) {
+        let waitAction = SKAction.wait(forDuration: waitDuration)
+        let moveAction = SKAction.move(to: randomDronePosition(), duration: teleportDuration)
+        
+        // This makes the drone accelerate a little when it starts moving, and decelerate a little
+        // before it stops moving. If you don't add this line, the drone will move at a constant rate.
+        moveAction.timingMode = SKActionTimingMode.easeInEaseOut
+        
+        let actionSequence = SKAction.sequence([waitAction, moveAction])
+        drone.run(actionSequence) {
+            self.runDroneActions(drone: drone, waitDuration: waitDuration, teleportDuration: teleportDuration)
+        }
+    }
+    
+    func randomDronePosition() -> CGPoint {
+        // random X of drone.
+        let droneXspawn = random(min: -0.45, max: 0.45)
+        // random Y of the drone.
+        let droneYspawn = random(min: -0.2, max: 0.45)
+
+        return CGPoint(x: droneXspawn*screenHeight, y: droneYspawn*screenHeight)
     }
     
     func random(min: Double, max: Double) -> Double {
