@@ -93,9 +93,7 @@ class GameScene: SKScene {
         if degrees < 270 && degrees >= 180 {
             degrees = -90
         }
-        
-        
-        
+
         radians = degrees/180.0*CGFloat.pi
         
         // Rotate the spaceship.
@@ -130,4 +128,5 @@ class GameScene: SKScene {
             bulletNode.removeFromParent()
         }
     }
+    
 }
