@@ -18,6 +18,7 @@ func shootBullet(scene: SKScene, from fromPosition: CGPoint, to toPosition: CGPo
 
     // The direction we should fire the bullet.
     var direction = CGPoint(x: toPosition.x - fromPosition.x, y: toPosition.y - fromPosition.y)
+    
     // Set the length of the direction vector to 1.
     let length = sqrt(direction.x*direction.x + direction.y*direction.y)
     direction.x /= length
