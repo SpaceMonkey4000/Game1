@@ -14,7 +14,15 @@ class BulletManager {
 
     var scene: SKScene?
 
-    func shootBullet(from fromPosition: CGPoint, to toPosition: CGPoint, imageNamed imageName: String) {
+    func shootPlayerBullet(from fromPosition: CGPoint, to toPosition: CGPoint) {
+        shootBullet(from: fromPosition, to: toPosition, imageNamed: "playerball")
+    }
+
+    func shootDroneBullet(from fromPosition: CGPoint, to toPosition: CGPoint) {
+        shootBullet(from: fromPosition, to: toPosition, imageNamed: "droneball")
+    }
+
+    private func shootBullet(from fromPosition: CGPoint, to toPosition: CGPoint, imageNamed imageName: String) {
         assert(scene != nil)
         
         let bulletNode = SKSpriteNode(imageNamed: imageName)

@@ -12,8 +12,6 @@ class GameScene: SKScene {
 
     var shootingTimer: Timer?
 
-    let playerballImageName =  "playerball"
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
 
@@ -73,7 +71,7 @@ class GameScene: SKScene {
 
         let touchPosition = convertTouchLocationToScene(touch: touches.first!)
         aimSpaceship(at: touchPosition)
-        BulletManager.sharedManager.shootBullet(from: gunNode.position, to: touchPosition, imageNamed: playerballImageName)
+        BulletManager.sharedManager.shootPlayerBullet(from: gunNode.position, to: touchPosition)
         
         lastTouchPosition = touchPosition
         startShooting()
@@ -134,9 +132,9 @@ class GameScene: SKScene {
     
     func startShooting() {
         assert(shootingTimer == nil, "Shooting timer is already defined.")
-        
+
         shootingTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (Timer) in
-            BulletManager.sharedManager.shootBullet(from: self.gunNode.position, to: self.lastTouchPosition, imageNamed: self.playerballImageName)
+            BulletManager.sharedManager.shootPlayerBullet(from: self.gunNode.position, to: self.lastTouchPosition)
         })
     }
     
