@@ -17,6 +17,7 @@
 		3AE87DFC1DA33F9C00C25692 /* Drone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87DFB1DA33F9C00C25692 /* Drone.swift */; };
 		3AE87DFE1DA3401300C25692 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87DFD1DA3401300C25692 /* Random.swift */; };
 		3AE87E001DA340D400C25692 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87DFF1DA340D400C25692 /* Screen.swift */; };
+		3AE87E021DA344B100C25692 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87E011DA344B100C25692 /* Bullet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3AE87DFB1DA33F9C00C25692 /* Drone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drone.swift; sourceTree = "<group>"; };
 		3AE87DFD1DA3401300C25692 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		3AE87DFF1DA340D400C25692 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		3AE87E011DA344B100C25692 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				3AE87DFB1DA33F9C00C25692 /* Drone.swift */,
 				3AE87DFD1DA3401300C25692 /* Random.swift */,
 				3AE87DFF1DA340D400C25692 /* Screen.swift */,
+				3AE87E011DA344B100C25692 /* Bullet.swift */,
 				3A43979F1D8D92AC004992C0 /* Assets.xcassets */,
 				3A4397AA1D8D96BE004992C0 /* Dad Only Keep Out */,
 			);
@@ -164,6 +167,7 @@
 				3A4397991D8D92AC004992C0 /* GameScene.swift in Sources */,
 				3A43979B1D8D92AC004992C0 /* GameViewController.swift in Sources */,
 				3AE87DFE1DA3401300C25692 /* Random.swift in Sources */,
+				3AE87E021DA344B100C25692 /* Bullet.swift in Sources */,
 				3AE87DFC1DA33F9C00C25692 /* Drone.swift in Sources */,
 				3A4397931D8D92AC004992C0 /* AppDelegate.swift in Sources */,
 				3AE87E001DA340D400C25692 /* Screen.swift in Sources */,
