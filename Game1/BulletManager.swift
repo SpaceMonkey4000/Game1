@@ -30,7 +30,7 @@ class BulletManager {
         scene!.addChild(bulletNode)
         bulletNode.position = fromPosition
 
-        bulletNode.zPosition = 75.0
+        bulletNode.zPosition = 10.0
 
         // The direction we should fire the bullet.
         var direction = CGPoint(x: toPosition.x - fromPosition.x, y: toPosition.y - fromPosition.y)
