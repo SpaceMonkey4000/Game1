@@ -5,12 +5,9 @@ class GameScene: SKScene {
     
     var gunNode = SKSpriteNode(imageNamed: "gun")
     var baseNode = SKSpriteNode(imageNamed: "base")
-    var redDrone = SKSpriteNode(imageNamed: "red_drone")
 
-    // The size of the iPad screen.
-    let screenWidth = 1024.0
-    let screenHeight = 768.0
-    
+    var drones: [Drone] = []
+
     var lastTouchPosition = CGPoint(x: 0.0, y: 0.0)
 
     var shootingTimer: Timer?
@@ -23,7 +20,6 @@ class GameScene: SKScene {
         // Add the spaceship to the scene.
         self.addChild(gunNode)
         self.addChild(baseNode)
-        self.addChild(redDrone)
 
         // The center of the screen is 0, 0.
         // The left side of the screen is -0.5*screenWidth.
@@ -35,21 +31,31 @@ class GameScene: SKScene {
         gunNode.position = CGPoint(x: 0.0, y: -0.44*screenHeight)
         baseNode.position = CGPoint(x: 0.0, y: -0.46*screenHeight)
         
-        initializeDrone(drone: redDrone, waitDuration: 5.0, teleportDuration: 0.12)
-        
         // Put the gun behind the base. Bigger numbers are in the front.
         // Smaller numbers are in the back.
-        gunNode.zPosition = 100.0;
-        baseNode.zPosition = 200.0;
-        redDrone.zPosition = 50.0;
-        
+        gunNode.zPosition = 100.0
+        baseNode.zPosition = 200.0
+
         // The size of the spaceship sprite image file is 394×347 pixels, which is
         // large compared to the size of the screen, so we scale it down to 25% this size.
         gunNode.setScale(1.0)
         gunNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-        
+
+        createDrone()
+        createDrone()
+        createDrone()
+    }
+
+    func createDrone() {
+        let drone = Drone(firstWaitDuration: random(min: 0.0, max: 5.0), nextWaitDuration: 5.0, teleportDuration: 0.12)
+        drones.append(drone)
+
+        drone.spriteNode.zPosition = 50.0
+
         // This is what makes the drone slightly bigger.
-        redDrone.setScale(1.3)
+        drone.spriteNode.setScale(1.3)
+
+        self.addChild(drone.spriteNode)
     }
 
     override func didMove(to view: SKView) {
@@ -141,7 +147,7 @@ class GameScene: SKScene {
         self.addChild(bulletNode)
         bulletNode.position = gunNode.position
 
-        bulletNode.zPosition = 75.0;
+        bulletNode.zPosition = 75.0
 
         // The direction we should fire the bullet.
         var direction = CGPoint(x: position.x - gunNode.position.x, y: position.y - gunNode.position.y)
@@ -162,46 +168,6 @@ class GameScene: SKScene {
         bulletNode.run(moveAction) { 
             bulletNode.removeFromParent()
         }
-    }
-    
-    func initializeDrone(drone: SKNode, waitDuration: TimeInterval, teleportDuration: TimeInterval) {
-        // Set initial drone position.
-        drone.position = randomDronePosition()
-
-        // Make the drone move randomly around the screen.
-        runDroneActions(drone: drone, waitDuration: waitDuration, teleportDuration: teleportDuration)
-    }
-    
-    func runDroneActions(drone: SKNode, waitDuration: TimeInterval, teleportDuration: TimeInterval) {
-        let waitAction = SKAction.wait(forDuration: waitDuration)
-        let moveAction = SKAction.move(to: randomDronePosition(), duration: teleportDuration)
-        
-        // This makes the drone accelerate a little when it starts moving, and decelerate a little
-        // before it stops moving. If you don't add this line, the drone will move at a constant rate.
-        moveAction.timingMode = SKActionTimingMode.easeInEaseOut
-        
-        // Make a sequence of the wait and move actions.
-        let actionSequence = SKAction.sequence([waitAction, moveAction])
-        
-        // Make the drone run the sequence of actions.
-        drone.run(actionSequence) {
-            // When the sequence of actions finishes, run a new sequence of drone actions.
-            self.runDroneActions(drone: drone, waitDuration: waitDuration, teleportDuration: teleportDuration)
-        }
-    }
-    
-    func randomDronePosition() -> CGPoint {
-        // random X of drone.
-        let droneXspawn = random(min: -0.45, max: 0.45)
-        // random Y of the drone.
-        let droneYspawn = random(min: -0.2, max: 0.45)
-
-        return CGPoint(x: droneXspawn*screenHeight, y: droneYspawn*screenHeight)
-    }
-    
-    func random(min: Double, max: Double) -> Double {
-        let s = Double(arc4random())/Double(UInt32.max)
-        return min*(1.0 - s) + max*s;
     }
     
 }
