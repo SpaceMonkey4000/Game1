@@ -13,12 +13,28 @@ class Drone {
 
     let spriteNode = SKSpriteNode(imageNamed: "red_drone")
 
+    var shootingTimer: Timer?
+
+    // How often to shoot, in seconds.
+    let shootingDelay = 1.0
+
     init(firstWaitDuration: TimeInterval, nextWaitDuration: TimeInterval, teleportDuration: TimeInterval) {
         // Set initial drone position.
         spriteNode.position = randomDronePosition()
 
         // Make the drone move randomly around the screen.
         runDroneActions(spriteNode: spriteNode, waitDuration: firstWaitDuration, nextWaitDuration: nextWaitDuration, teleportDuration: teleportDuration)
+
+        delay(fmod(firstWaitDuration, shootingDelay)) {
+            self.shootingTimer = Timer.scheduledTimer(withTimeInterval: self.shootingDelay, repeats: true, block: { (Timer) in
+                BulletManager.sharedManager.shootDroneBullet(from: self.spriteNode.position, to: CGPoint(x: 0.0, y: -0.44*screenHeight))
+            })
+        }
+    }
+
+    deinit {
+        spriteNode.removeFromParent()
+        shootingTimer?.invalidate()
     }
 
     func runDroneActions(spriteNode: SKNode, waitDuration: TimeInterval, nextWaitDuration: TimeInterval, teleportDuration: TimeInterval) {

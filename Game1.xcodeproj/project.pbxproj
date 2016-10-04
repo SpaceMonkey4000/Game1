@@ -18,6 +18,7 @@
 		3AE87DFE1DA3401300C25692 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87DFD1DA3401300C25692 /* Random.swift */; };
 		3AE87E001DA340D400C25692 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87DFF1DA340D400C25692 /* Screen.swift */; };
 		3AE87E021DA344B100C25692 /* BulletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87E011DA344B100C25692 /* BulletManager.swift */; };
+		3AE87E041DA3488C00C25692 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE87E031DA3488C00C25692 /* Delay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3AE87DFD1DA3401300C25692 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		3AE87DFF1DA340D400C25692 /* Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		3AE87E011DA344B100C25692 /* BulletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletManager.swift; sourceTree = "<group>"; };
+		3AE87E031DA3488C00C25692 /* Delay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +70,10 @@
 			children = (
 				3A4397981D8D92AC004992C0 /* GameScene.swift */,
 				3AE87DFB1DA33F9C00C25692 /* Drone.swift */,
-				3AE87DFD1DA3401300C25692 /* Random.swift */,
-				3AE87DFF1DA340D400C25692 /* Screen.swift */,
 				3AE87E011DA344B100C25692 /* BulletManager.swift */,
+				3AE87DFF1DA340D400C25692 /* Screen.swift */,
+				3AE87DFD1DA3401300C25692 /* Random.swift */,
+				3AE87E031DA3488C00C25692 /* Delay.swift */,
 				3A43979F1D8D92AC004992C0 /* Assets.xcassets */,
 				3A4397AA1D8D96BE004992C0 /* Dad Only Keep Out */,
 			);
@@ -169,6 +172,7 @@
 				3AE87DFE1DA3401300C25692 /* Random.swift in Sources */,
 				3AE87E021DA344B100C25692 /* BulletManager.swift in Sources */,
 				3AE87DFC1DA33F9C00C25692 /* Drone.swift in Sources */,
+				3AE87E041DA3488C00C25692 /* Delay.swift in Sources */,
 				3A4397931D8D92AC004992C0 /* AppDelegate.swift in Sources */,
 				3AE87E001DA340D400C25692 /* Screen.swift in Sources */,
 			);
