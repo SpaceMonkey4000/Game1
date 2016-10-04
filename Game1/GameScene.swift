@@ -17,6 +17,8 @@ class GameScene: SKScene {
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
 
+        BulletManager.sharedManager.scene = self
+
         // Called before the game starts.
 
         // Add the spaceship to the scene.
@@ -71,7 +73,7 @@ class GameScene: SKScene {
 
         let touchPosition = convertTouchLocationToScene(touch: touches.first!)
         aimSpaceship(at: touchPosition)
-        shootBullet(scene: self, from: gunNode.position, to: touchPosition, imageNamed: playerballImageName)
+        BulletManager.sharedManager.shootBullet(from: gunNode.position, to: touchPosition, imageNamed: playerballImageName)
         
         lastTouchPosition = touchPosition
         startShooting()
@@ -134,7 +136,7 @@ class GameScene: SKScene {
         assert(shootingTimer == nil, "Shooting timer is already defined.")
         
         shootingTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (Timer) in
-            shootBullet(scene: self, from: self.gunNode.position, to: self.lastTouchPosition, imageNamed: self.playerballImageName)
+            BulletManager.sharedManager.shootBullet(from: self.gunNode.position, to: self.lastTouchPosition, imageNamed: self.playerballImageName)
         })
     }
     
